@@ -1,5 +1,5 @@
 {
-    "name": "practices",
+    "name": "project-ex02",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -10,6 +10,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "douzone-soottoppi-math": "file:douzone-soottoppi-math"
+        "douzone-soottoppi-math": "file:../douzone-soottoppi-math"
     }
 }
