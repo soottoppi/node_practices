@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const mainRouter = require("./routes/main");
 const helloRouter = require("./routes/hello");
+const userRouter = require("./routes/user");
 
 const port = 8080;
 
@@ -18,16 +19,16 @@ const application = express()
     .set("view engine", "ejs")
     // 4. request router
     .all("*", function (req, res, next) {
-        req.locals.req = req;
-        req.locals.req = res;
+        res.locals.req = req;
+        res.locals.res = res;
         next();
     })
     .use("/", mainRouter) // mainRouter 모듈을 가져와야함
-    .use("/hello", helloRouter); // helloRouter 모듈을 가져와야함
+    .use("/hello", helloRouter) // helloRouter 모듈을 가져와야함
+    .use("/user", userRouter);
 
 // Server Setup
-http = http
-    .createServer(application)
+http.createServer(application)
     .on("listening", function () {
         console.info(`http server runs on ${port}`);
     })
