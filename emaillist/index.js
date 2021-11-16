@@ -1,9 +1,7 @@
 const http = require("http");
 const path = require("path");
 const express = require("express");
-const mainRouter = require("./routes/main");
-const helloRouter = require("./routes/hello");
-const userRouter = require("./routes/user");
+const emaillistRouter = require("./routes/emaillist");
 
 const port = 8080;
 
@@ -23,9 +21,7 @@ const application = express()
         res.locals.res = res;
         next();
     })
-    .use("/", mainRouter) // mainRouter 모듈을 가져와야함
-    .use("/hello", helloRouter) // helloRouter 모듈을 가져와야함
-    .use("/user", userRouter);
+    .use("/", emaillistRouter); // mainRouter 모듈을 가져와야함
 
 // Server Setup
 http.createServer(application)
