@@ -45,8 +45,8 @@
     |--- [multer-temporary-store]
     |--- config
     |--- public
-    |       |--- assets
-    |               |--- [upload-images]
+    |       |--- [upload-images]
+    |       |--- assets               
     |               |--- css
     |               |--- images
     |               |--- js
@@ -65,7 +65,3 @@
                     |--- includes
      
 </pre>
-
-```
-
-```
