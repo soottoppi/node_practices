@@ -1,9 +1,11 @@
 // 4-4. request router
-const errorRoute = require("./error");
+// const errorRoute = require("/error");
 const applicationRouter = {
     setup: function (application) {
         // const site = models.Site.findOne();
 
+        // .use(errorRoute.error404)
+        // .use(errorRoute.error500)
         application
             .all("*", function (req, res, next) {
                 res.locals.req = req;
@@ -12,10 +14,7 @@ const applicationRouter = {
             })
 
             .use("/", require("./main"))
-            .use("/user", require("./user"))
-
-            .use(errorRoute.error404)
-            .use(errorRoute.error500).siteTitle = "Mysite!!"; // setTitle이라는 변수가 전역으로 사용가능하다
+            .use("/user", require("./user")).siteTitle = "Mysite!!"; // setTitle이라는 변수가 전역으로 사용가능하다
     },
 };
 
