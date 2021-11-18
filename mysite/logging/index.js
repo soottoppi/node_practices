@@ -46,7 +46,6 @@ const logger = winston.createLogger({
     ],
 });
 
-// app.env의 PROFILE이 dev이면 => logger.add() 실행
 process.env.PROFILE === "dev" &&
     logger.add(
         new winston.transports.Console({
