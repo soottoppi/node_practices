@@ -9,7 +9,8 @@ dotenv.config({
 });
 
 // 2. Application Routers
-const applicationRouter = require("../routes");
+// { }로 받아올 때는 사용하고자하는 모듈 함수의 이름을 정확히 지정해주어야 한다
+const { applicationRouter } = require("./routes");
 
 // 3. Logging
 
