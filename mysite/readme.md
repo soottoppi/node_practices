@@ -6,7 +6,7 @@
 [mysite] $ npm i express o
 [mysite] $ npm i ejs     o
 [mysite] $ npm i mysql2  o
-[mysite] $ npm i express-session
+[mysite] $ npm i express-session o
 [mysite] $ npm i sequelize o
 [mysite] $ npm i dotenv  o
 [mysite] $ npm i multer

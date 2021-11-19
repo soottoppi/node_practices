@@ -3,6 +3,8 @@
         "dotenv": "^10.0.0",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "moment": "^2.29.1",
         "mysql2": "^2.3.3",
         "sequelize": "^6.9.0",
         "winston": "^3.3.3",
@@ -14,8 +16,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "debug": "nodemon index.js",
-        "test": "npx mocha"
+        "debug": "nodemon index.js"
     },
     "keywords": [],
     "author": "",

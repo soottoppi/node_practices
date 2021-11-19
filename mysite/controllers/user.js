@@ -1,14 +1,79 @@
+const models = require('../models');
+
 module.exports = {
-    join: function (req, res) {
-        res.render("user/join");
+    
+    join: function(req, res) {
+        res.render('user/join');
     },
+    _join: async function(req, res, next) {
+        try {
+            await models.User.create({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                gender: req.body.gender
+            });
 
-    _join: function (req, res) {
-        console.log(req.body);
-        res.redirect("/user/joinsuccess");
-    },
+            res.redirect('/user/joinsuccess');
 
-    joinsuccess: function (req, res) {
-        res.render("user/joinsuccess");
+        } catch(e) {
+            next(e);
+        }
     },
-};
+    joinsuccess: function(req, res) {
+        res.render('user/joinsuccess');
+    },
+    login: function(req, res) {
+        res.render('user/login');
+    },
+    _login: async function(req, res, next) {
+        try {
+            const user = await models.User.findOne({
+                attributes: ['no', 'name', 'role'],
+                where: {
+                    email: req.body.email,
+                    password: req.body.password
+                }
+            });
+
+            if(user == null){
+                // '로그인이 실패했습니다'를 띄우기
+                // res.render('user/login', { result: "fail"});
+                res.render('user/login', Object.assign(req.body, {result: 'fail'}));
+                return;
+            }
+
+            // 세션처리
+            req.session.authUser = user;
+
+            res.redirect('/');
+
+        } catch(e) {
+            next(e);
+        }
+    },
+    logout: async function(req, res, next){
+        try{
+            await req.session.destroy();
+            res.redirect("/");
+        } catch(e){
+            next(e);
+        }
+    },
+    update: async function(req, res, next){
+        try{
+            const user = await models.User.findOne({
+                attributes: ['no','email','name'],
+                where: {
+                    no: req.session.authUser.no
+                }
+            });
+            res.render("user/update", {user});
+        } catch(e){
+            next(e);
+        }
+    },
+    _update: async function(req, res, next){
+
+    }
+}
